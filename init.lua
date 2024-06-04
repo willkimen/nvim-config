@@ -1,10 +1,12 @@
+require 'custom.global'  -- Mantenha por primeiro, principalmente antes dos plugins
 require 'custom.keymaps'
 require 'custom.options'
-require 'custom.global'
 require 'custom.autocmd'
 
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+-- [[ Instala o gerenciador de plugin `lazy.nvim` ]]
+-- Esse trecho de código verifica se existe o lazy, se não, ele instala.
+-- lazy.vim é um gerenciador importante para poder instalar os outros plugins.
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim  para mais informações
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -14,29 +16,29 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 --
---  To check the current status of your plugins, run
+--  Para verificar os status atual dos plugins, rode esse comando:
 --    :Lazy
 --
---  You can press `?` in this menu for help. Use `:q` to close the window
+--  Você pode pressionar `?` neste menu para obter ajuda. Use `:q` para fechar a janela
 --
---  To update plugins you can run
+--  Para atualizar plug-ins você pode executar
 --    :Lazy update
 --
--- NOTE: Here is where you install your plugins.
+-- NOTE: Aqui é onde você instala seus plugins.
 require('lazy').setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- NOTE: Os plug-ins podem ser adicionados com um link (ou para um repositório do github: link 'proprietário/repo').
+  'tpope/vim-sleuth', -- Detecte tabstop e shiftwidth automaticamente
 
-  -- NOTE: Plugins can also be added by using a table,
-  -- with the first argument being the link and the following
-  -- keys can be used to configure plugin behavior/loading/etc.
+  -- NOTE: Plugins também podem ser adicionados usando uma tabela,
+  -- com o primeiro argumento sendo o link e as seguintes
+  -- chaves podem ser usadas para configurar o plugin behavior/loading/etc.
   --
-  -- Use `opts = {}` to force a plugin to be loaded.
+  -- Use `opts = {}` para forçar o carregamento de um plugin.
   --
-  --  This is equivalent to:
+  --  Isso é equivalente a:
   --    require('Comment').setup({})
 
-  -- "gc" to comment visual regions/lines
+  -- "gc" para comentar regiões/linhas visuais
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Here is a more advanced example where we pass configuration
@@ -57,7 +59,7 @@ require('lazy').setup({
     },
   },
 
-  -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
+  -- NOTE: Plugins também podem ser configurados para executar código Lua quando são carregados.
   --
   -- This is often very useful to both group configuration, as well as handle
   -- lazy loading plugins that don't need to be loaded immediately at startup.
@@ -634,7 +636,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'python', 'go', },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
