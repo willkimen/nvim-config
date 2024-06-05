@@ -372,17 +372,7 @@ require('lazy').setup({
               },
             },
           },
-          pyright = {
-            settings = {
-              python = {
-                analysis = {
-                  typeCheckingMode = "strict",           -- Define o modo de verificação de tipos para "strict" (mais rigoroso)
-                  autoSearchPaths = true,                -- Habilita a busca automática de caminhos para módulos importados
-                  useLibraryCodeForTypes = true,         -- Usa o código de bibliotecas para inferência de tipos
-                },
-              },
-            },
-            },
+          pyright = { },
           rust_analyzer = {
             settings = {
               ["rust-analyzer"] = {
