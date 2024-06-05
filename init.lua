@@ -1,20 +1,11 @@
-require 'custom.global'  -- Mantenha por primeiro, principalmente antes dos plugins
-require 'custom.keymaps'
-require 'custom.options'
-require 'custom.autocmd'
+require 'global'  -- Mantenha por primeiro, principalmente antes dos plugins
+require 'keymaps'
+require 'options'
+require 'autocmd'
+require 'lazy-setup'
 
--- [[ Instala o gerenciador de plugin `lazy.nvim` ]]
--- Esse trecho de código verifica se existe o lazy, se não, ele instala.
--- lazy.vim é um gerenciador importante para poder instalar os outros plugins.
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim  para mais informações
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
+--[[ #################### Configure and install plugins  #######################
 --
 --  Para verificar os status atual dos plugins, rode esse comando:
 --    :Lazy
@@ -25,6 +16,9 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Aqui é onde você instala seus plugins.
+
+]]
+
 require('lazy').setup({
   -- NOTE: Os plug-ins podem ser adicionados com um link (ou para um repositório do github: link 'proprietário/repo').
   'tpope/vim-sleuth', -- Detecte tabstop e shiftwidth automaticamente
@@ -74,7 +68,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  { -- ############### Useful plugin to show you pending keybinds. ##################
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -104,7 +98,7 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  { -- Fuzzy Finder (files, lsp, etc)
+  { -- ############### Fuzzy Finder (files, lsp, etc) #####################
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     branch = '0.1.x',
@@ -209,7 +203,7 @@ require('lazy').setup({
     end,
   },
 
-  { -- LSP Configuration & Plugins
+  { -- ############### LSP Configuration & Plugins ###############
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -426,7 +420,7 @@ require('lazy').setup({
     end,
   },
 
-  { -- Autoformat
+  { -- ############## Autoformat ###########################
     'stevearc/conform.nvim',
     lazy = false,
     keys = {
@@ -463,7 +457,7 @@ require('lazy').setup({
     },
   },
 
-  { -- Autocompletion
+  { -- ############### Autocompletion ##############################
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
@@ -592,10 +586,10 @@ require('lazy').setup({
     end,
   },
 
-  -- Highlight todo, notes, etc in comments
+  -- ################### Highlight todo, notes, etc in comments #########################################3
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  { -- Collection of various small independent plugins/modules
+  { --###################  Collection of various small independent plugins/modules  ##########################
     'echasnovski/mini.nvim',
     config = function()
       -- Better Around/Inside textobjects
