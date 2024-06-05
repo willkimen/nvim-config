@@ -361,9 +361,44 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        gopls = {},
-        pyright = {},
-        rust_analyzer = {},
+          gopls = {  -- Configuração para o servidor LSP de Go
+            settings = {
+              gopls = {
+                analyses = {
+                  unusedparams = true,  -- Habilita a análise para detectar parâmetros não utilizados
+                  shadow = true,        -- Habilita a análise para detectar variáveis que "somam" outras variáveis
+                },
+                staticcheck = true,      -- Habilita verificações estáticas avançadas usando `staticcheck`
+              },
+            },
+          },
+          pyright = {
+            settings = {
+              python = {
+                analysis = {
+                  typeCheckingMode = "strict",           -- Define o modo de verificação de tipos para "strict" (mais rigoroso)
+                  autoSearchPaths = true,                -- Habilita a busca automática de caminhos para módulos importados
+                  useLibraryCodeForTypes = true,         -- Usa o código de bibliotecas para inferência de tipos
+                },
+              },
+            },
+            },
+          rust_analyzer = {
+            settings = {
+              ["rust-analyzer"] = {
+                assist = {
+                  importMergeBehavior = "last",         -- Define o comportamento de mesclagem de importações
+                  importPrefix = "by_self",             -- Usa a própria declaração como prefixo nas importações
+                },
+                cargo = {
+                  loadOutDirsFromCheck = true,          -- Habilita o carregamento de diretórios de saída do `cargo check`
+                },
+                procMacro = {
+                  enable = true,                        -- Habilita macros de processo
+                },
+              },
+            },
+          },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
