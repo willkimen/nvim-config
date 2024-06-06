@@ -26,7 +26,7 @@ return {
           opts.buffer = bufnr
           vim.keymap.set(mode, l, r, opts)
         end
-
+	--[[ Desativado as teclas de atalho, pois já tenho ferramenta fora do neovim para isso.
         -- Navigation
         map('n', ']c', function()
           if vim.wo.diff then
@@ -35,7 +35,7 @@ return {
             gitsigns.nav_hunk 'next'
           end
         end, { desc = 'Jump to next git [c]hange' })
-
+        
         map('n', '[c', function()
           if vim.wo.diff then
             vim.cmd.normal { '[c', bang = true }
@@ -43,7 +43,7 @@ return {
             gitsigns.nav_hunk 'prev'
           end
         end, { desc = 'Jump to previous git [c]hange' })
-
+	
         -- Actions
         -- visual mode
         map('v', '<leader>hs', function()
@@ -53,6 +53,7 @@ return {
           gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'reset git hunk' })
         -- normal mode
+        
         map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
         map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
         map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
@@ -66,7 +67,8 @@ return {
         end, { desc = 'git [D]iff against last commit' })
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' }) ]]
+        
       end,
     },
 }
