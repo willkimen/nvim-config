@@ -26,7 +26,7 @@ return {
           opts.buffer = bufnr
           vim.keymap.set(mode, l, r, opts)
         end
-	--[[ Desativado as teclas de atalho, pois já tenho ferramenta fora do neovim para isso.
+	 --[[Desativado as teclas de atalho, pois já tenho ferramenta fora do neovim para isso.
         -- Navigation
         map('n', ']c', function()
           if vim.wo.diff then
