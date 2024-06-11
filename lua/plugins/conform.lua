@@ -13,24 +13,38 @@ return { -- ############## Autoformat ###########################
     },
     opts = {
       notify_on_error = false,
+      -- Essa função serve para aplicar os formatadores e lintes sempre que você
+      -- salva o buffer, menos para arquivos .c e .cpp.
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
+      -- Formatadores de código
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" },
+        python = { 
+	   {
+	   "isort",
+	   args = { "--profile", "black", "--line-length", "88" }
+	   },
+	   {
+	   "black",
+	   args = { "--line-length", "88", }
+	   }
+        },
         --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
+        -- Você pode usar uma sub-lista para informar o conform para executar *até* que um formatador seja encontrado.
         -- javascript = { { "prettierd", "prettier" } },
       },
+      -- Linters
+      linters_by_ft = {
+        python = {
+	  "flake8",
+	  args = { "--max-line-length", "88", "--ignore", "E203,W503" }
+        }
+      }
     },
   }
