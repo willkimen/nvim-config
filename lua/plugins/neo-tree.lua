@@ -20,6 +20,12 @@ return {
           ['\\'] = 'close_window',
         },
       },
+      -- Mostrará arquivos ocultos, arquivos ignorados pelo Git e arquivos que são normalmente ocultos.
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        hide_hidden = false,
+      },
     },
   },
 }
