@@ -46,4 +46,6 @@ examples of adding popularly requested plugins.
 
 [The Only Video You Need to Get Started with Neovim](https://youtu.be/m8C0Cq9Uv9o)
 
+# Atenção
 
+No arquivo do plugin nvim-cmp, eu ativei snippets para todas as linguagens suportadas. Se caso fique lento alguma coisa no neovim, ative somente para linguagens específicas.
