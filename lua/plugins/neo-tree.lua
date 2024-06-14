@@ -1,4 +1,4 @@
--- Neo-tree is a Neovim plugin to browse the file system
+-- Neo-tree é um plugin do Neovim para navegar no sistema de arquivos
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
 return {
@@ -6,12 +6,12 @@ return {
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    'nvim-tree/nvim-web-devicons', -- não é estritamente necessário, mas recomendado
     'MunifTanjim/nui.nvim',
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '\\', ':Neotree reveal<CR>', { desc = 'Revelar NeoTree' } },
   },
   opts = {
     filesystem = {
@@ -29,3 +29,4 @@ return {
     },
   },
 }
+

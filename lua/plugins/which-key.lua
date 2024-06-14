@@ -1,10 +1,10 @@
-return  { -- ############### Useful plugin to show you pending keybinds. ##################
+return { -- ############### Plugin útil para mostrar combinações de teclas pendentes. ##################
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
+    event = 'VimEnter', -- Define o evento de carregamento como 'VimEnter'
+    config = function() -- Esta é a função que é executada APÓS o carregamento
       require('which-key').setup()
 
-      -- Document existing key chains
+      -- Documenta combinações de teclas existentes
       require('which-key').register {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },

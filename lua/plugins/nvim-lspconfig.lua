@@ -1,57 +1,57 @@
-return { -- ############### LSP Configuration & Plugins ###############
+return { -- ############### Configuração & Plugins LSP ###############
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      -- Instala automaticamente LSPs e ferramentas relacionadas para o stdpath do Neovim
+      { 'williamboman/mason.nvim', config = true }, -- NOTA: Deve ser carregado antes das dependências
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      -- Atualizações de status úteis para LSP.
+      -- NOTA: `opts = {}` é o mesmo que chamar `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
+      -- `neodev` configura o Lua LSP para sua configuração do Neovim, tempo de execução e plugins
+      -- usado para autocompletar, anotações e assinaturas das APIs do Neovim
       { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
-      -- Brief aside: **What is LSP?**
+      -- Breve aparte: **O que é LSP?**
       --
-      -- LSP is an initialism you've probably heard, but might not understand what it is.
+      -- LSP é um acrônimo que você provavelmente já ouviu, mas pode não entender o que é.
       --
-      -- LSP stands for Language Server Protocol. It's a protocol that helps editors
-      -- and language tooling communicate in a standardized fashion.
+      -- LSP significa Language Server Protocol. É um protocolo que ajuda editores
+      -- e ferramentas de linguagem a se comunicarem de forma padronizada.
       --
-      -- In general, you have a "server" which is some tool built to understand a particular
-      -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-      -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-      -- processes that communicate with some "client" - in this case, Neovim!
+      -- Em geral, você tem um "servidor" que é uma ferramenta criada para entender uma linguagem específica
+      -- (como `gopls`, `lua_ls`, `rust_analyzer`, etc.). Esses Servidores de Linguagem
+      -- (às vezes chamados de servidores LSP, mas isso é como chamar um caixa eletrônico de "Máquina ATM") são processos autônomos
+      -- que se comunicam com algum "cliente" - neste caso, o Neovim!
       --
-      -- LSP provides Neovim with features like:
-      --  - Go to definition
-      --  - Find references
-      --  - Autocompletion
-      --  - Symbol Search
-      --  - and more!
+      -- O LSP fornece ao Neovim recursos como:
+      --  - Ir para a definição
+      --  - Encontrar referências
+      --  - Autocompletar
+      --  - Busca de símbolos
+      --  - e mais!
       --
-      -- Thus, Language Servers are external tools that must be installed separately from
-      -- Neovim. This is where `mason` and related plugins come into play.
+      -- Assim, os Servidores de Linguagem são ferramentas externas que devem ser instaladas separadamente do
+      -- Neovim. É aqui que `mason` e plugins relacionados entram em jogo.
       --
-      -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-      -- and elegantly composed help section, `:help lsp-vs-treesitter`
+      -- Se você está se perguntando sobre LSP vs treesitter, você pode verificar a seção de ajuda
+      -- maravilhosamente e elegantemente composta, `:help lsp-vs-treesitter`
 
-      --  This function gets run when an LSP attaches to a particular buffer.
-      --    That is to say, every time a new file is opened that is associated with
-      --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-      --    function will be executed to configure the current buffer
+      -- Esta função é executada quando um LSP é anexado a um buffer específico.
+      -- Ou seja, toda vez que um novo arquivo é aberto e está associado a
+      -- um LSP (por exemplo, abrir `main.rs` está associado ao `rust_analyzer`) esta
+      -- função será executada para configurar o buffer atual
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-          -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-          -- to define small helper and utility functions so you don't have to repeat yourself.
+          -- NOTA: Lembre-se de que Lua é uma linguagem de programação real e, como tal, é possível
+          -- definir funções auxiliares e utilitárias pequenas para que você não precise se repetir.
           --
-          -- In this case, we create a function that lets us more easily define mappings specific
-          -- for LSP related items. It sets the mode, buffer and description for us each time.
+          -- Neste caso, criamos uma função que nos permite definir mais facilmente mapeamentos específicos
+          -- para itens relacionados ao LSP. Ela define o modo, o buffer e a descrição para nós a cada vez.
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
@@ -97,12 +97,11 @@ return { -- ############### LSP Configuration & Plugins ###############
           -- Por exemplo, em C isso te levaria para o header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-
-          -- The following two autocommands are used to highlight references of the
-          -- word under your cursor when your cursor rests there for a little while.
-          --    See `:help CursorHold` for information about when this is executed
+          -- Os dois autocomandos a seguir são usados para destacar referências da
+          -- palavra sob seu cursor quando seu cursor descansar ali por um tempo.
+          -- Veja `:help CursorHold` para mais informações sobre quando isso é executado
           --
-          -- When you move your cursor, the highlights will be cleared (the second autocommand).
+          -- Quando você mover seu cursor, os destaques serão limpos (o segundo autocomando).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
@@ -127,10 +126,10 @@ return { -- ############### LSP Configuration & Plugins ###############
             })
           end
 
-          -- The following autocommand is used to enable inlay hints in your
-          -- code, if the language server you are using supports them
+          -- O seguinte autocomando é usado para habilitar dicas embutidas no seu
+          -- código, se o servidor de linguagem que você está usando as suportar
           --
-          -- This may be unwanted, since they displace some of your code
+          -- Isso pode ser indesejado, pois deslocam parte do seu código
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -139,22 +138,22 @@ return { -- ############### LSP Configuration & Plugins ###############
         end,
       })
 
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+      -- Servidores LSP e clientes são capazes de comunicar entre si quais recursos eles suportam.
+      -- Por padrão, o Neovim não suporta tudo o que está na especificação LSP.
+      -- Quando você adiciona nvim-cmp, luasnip, etc., o Neovim agora tem *mais* capacidades.
+      -- Então, criamos novas capacidades com nvim cmp, e então transmitimos isso para os servidores.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-      -- Enable the following language servers
-      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      -- Habilite os seguintes servidores de linguagem
+      -- Sinta-se à vontade para adicionar/remover quaisquer LSPs que você queira aqui. Eles serão instalados automaticamente.
       --
-      --  Add any additional override configuration in the following tables. Available keys are:
-      --  - cmd (table): Override the default command used to start the server
-      --  - filetypes (table): Override the default list of associated filetypes for the server
-      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-      --  - settings (table): Override the default settings passed when initializing the server.
-      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      -- Adicione qualquer configuração de substituição adicional nas tabelas a seguir. As chaves disponíveis são:
+      -- - cmd (tabela): Substitui o comando padrão usado para iniciar o servidor
+      -- - filetypes (tabela): Substitui a lista padrão de tipos de arquivos associados ao servidor
+      -- - capabilities (tabela): Substitui campos nas capacidades. Pode ser usado para desativar certos recursos do LSP.
+      -- - settings (tabela): Substitui as configurações padrão passadas ao inicializar o servidor.
+      --        Por exemplo, para ver as opções para `lua_ls`, você pode ir para: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
           gopls = {  -- Configuração para o servidor LSP de Go
@@ -185,12 +184,12 @@ return { -- ############### LSP Configuration & Plugins ###############
               },
             },
           },
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        -- ... etc. Veja `:help lspconfig-all` para uma lista de todos os LSPs pré-configurados
         --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
+        -- Algumas linguagens (como typescript) têm plugins de linguagem completos que podem ser úteis:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
+        -- Mas para muitas configurações, o LSP (`tsserver`) funcionará bem
         -- tsserver = {},
         --
 
@@ -203,26 +202,26 @@ return { -- ############### LSP Configuration & Plugins ###############
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- Você pode alternar abaixo para ignorar os avisos barulhentos de `missing-fields` do Lua_LS
               -- diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
       }
 
-      -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
+      -- Certifique-se de que os servidores e ferramentas acima estejam instalados
+      -- Para verificar o status atual das ferramentas instaladas e/ou instalar manualmente
+      -- outras ferramentas, você pode executar
+      -- :Mason
       --
-      --  You can press `g?` for help in this menu.
+      -- Você pode pressionar `g?` para obter ajuda neste menu.
       require('mason').setup()
 
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
+      -- Você pode adicionar outras ferramentas aqui que deseja que o Mason instale
+      -- para você, para que estejam disponíveis dentro do Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua', -- Usado para formatar código Lua
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -230,9 +229,9 @@ return { -- ############### LSP Configuration & Plugins ###############
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
+            -- Isso lida com a substituição apenas dos valores explicitamente passados
+            -- pela configuração do servidor acima. Útil ao desativar
+            -- certos recursos de um LSP (por exemplo, desativar a formatação para tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
@@ -240,3 +239,4 @@ return { -- ############### LSP Configuration & Plugins ###############
       }
     end,
   }
+

@@ -1,10 +1,10 @@
--- Adds git related signs to the gutter, as well as utilities for managing changes
--- NOTE: gitsigns is already included in init.lua but contains only the base
--- config. This will add also the recommended keymaps.
--- Here is a more advanced example where we pass configuration
-  -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
-  --    require('gitsigns').setup({ ... })
-  -- See `:help gitsigns` to understand what the configuration keys do
+-- Adiciona sinais relacionados ao Git na coluna de sinalização, bem como utilitários para gerenciar mudanças
+-- NOTA: gitsigns já está incluído no init.lua, mas contém apenas a configuração básica.
+-- Isto também adicionará os mapeamentos de teclas recomendados.
+-- Aqui está um exemplo mais avançado onde passamos opções de configuração
+-- para `gitsigns.nvim`. Isto é equivalente ao seguinte Lua:
+--    require('gitsigns').setup({ ... })
+-- Veja `:help gitsigns` para entender o que as chaves de configuração fazem
   
   
   

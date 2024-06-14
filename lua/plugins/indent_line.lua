@@ -1,9 +1,10 @@
 return {
-  { -- Add indentation guides even on blank lines
+  { -- Adiciona guias de indentação mesmo em linhas em branco
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
+    -- Habilita `lukas-reineke/indent-blankline.nvim`
+    -- Veja `:help ibl`
     main = 'ibl',
     opts = {},
   },
 }
+

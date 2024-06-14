@@ -1,32 +1,33 @@
-return { -- Highlight, edit, and navigate code
+return { -- Realçar, editar e navegar pelo código
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'python', 'go', },
-      -- Autoinstall languages that are not installed
+      -- Instalar automaticamente linguagens que não estão instaladas
       auto_install = true,
       highlight = {
         enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        -- Algumas linguagens dependem do sistema de realce regex do vim (como Ruby) para regras de indentação.
+        -- Se você estiver enfrentando problemas estranhos de indentação, adicione a linguagem
+        -- à lista de additional_vim_regex_highlighting e desative a indentação para essa linguagem.
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
     config = function(_, opts)
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+      -- [[ Configurar Treesitter ]] Veja `:help nvim-treesitter`
 
-      -- Prefer git instead of curl in order to improve connectivity in some environments
+      -- Prefira git em vez de curl para melhorar a conectividade em alguns ambientes
       require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
 
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
+      -- Existem módulos adicionais do nvim-treesitter que você pode usar para interagir
+      -- com nvim-treesitter. Você deve explorar alguns e ver o que te interessa:
       --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      --    - Seleção incremental: Incluído, veja `:help nvim-treesitter-incremental-selection-mod`
+      --    - Mostrar o contexto atual: https://github.com/nvim-treesitter/nvim-treesitter-context
+      --    - Treesitter + objetos de texto: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   }
+

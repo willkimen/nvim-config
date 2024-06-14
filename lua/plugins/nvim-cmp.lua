@@ -18,7 +18,7 @@ return { -- ############### Autocompletar ##############################
           -- `friendly-snippets` contém uma variedade de snippets prontos.
           -- Veja o README sobre snippets individuais de linguagem/framework/plugin:
           -- https://github.com/rafamadriz/friendly-snippets
-          {
+          { --[[ ------- Isso vai adicionar snippets de várias linguagens, se ficar lento, ative somente das linguagens que você usa. --------]]
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
