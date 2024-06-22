@@ -47,13 +47,30 @@ return { -- ############### Finder Fuzzy (arquivos, lsp, etc) ##################
       require('telescope').setup {
         -- Você pode colocar seus mapeamentos/atualizações/etc. padrão aqui
         -- Todas as informações que você está procurando estão em `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          -- Adicionado mapeamento para abrir arquivos em abas
+          mappings = {
+            i = {
+              ["<CR>"] = function(prompt_bufnr)
+                local action_state = require('telescope.actions.state')
+                local actions = require('telescope.actions')
+                local selection = action_state.get_selected_entry()
+                actions.close(prompt_bufnr)
+
+                -- Verifica se o buffer já está aberto
+                local bufnr = vim.fn.bufnr(selection.path)
+                if bufnr ~= -1 then
+                  -- Se o buffer já estiver aberto, apenas mude para ele
+                  vim.cmd(string.format("tab sbuffer %d", bufnr))
+                else
+                  -- Se o buffer não estiver aberto, abra em uma nova aba
+                  vim.cmd(string.format("tabedit %s", selection.path))
+                end
+              end,
+            },
+          },
+        },
+        pickers = {},
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
