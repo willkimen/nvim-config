@@ -86,9 +86,17 @@ return { -- ############### Finder Fuzzy (arquivos, lsp, etc) ##################
 	      end,
 	    },
 	  },
+	  -- Telescope ignora esses diretórios e arquivos globalmente
+	  file_ignore_patterns = { "venv", ".venv", "%.git", "vendor", "target", "node_modules", "dist", "build", },
 	},
 
-        pickers = {},
+        pickers = {
+	
+          find_files = {
+            hidden = true, -- Ativa o telescope buscar por arquivos ocultos
+            file_ignore_patterns = { "venv", ".venv", "%.git", "vendor", "target", "node_modules", "dist", "build", }, -- Com exceção desses
+          }
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
