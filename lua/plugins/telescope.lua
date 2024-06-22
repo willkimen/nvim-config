@@ -47,29 +47,47 @@ return { -- ############### Finder Fuzzy (arquivos, lsp, etc) ##################
       require('telescope').setup {
         -- Você pode colocar seus mapeamentos/atualizações/etc. padrão aqui
         -- Todas as informações que você está procurando estão em `:help telescope.setup()`
-        defaults = {
-          -- Adicionado mapeamento para abrir arquivos em abas
-          mappings = {
-            i = {
-              ["<CR>"] = function(prompt_bufnr)
-                local action_state = require('telescope.actions.state')
-                local actions = require('telescope.actions')
-                local selection = action_state.get_selected_entry()
-                actions.close(prompt_bufnr)
+	defaults = {
+	  -- Adicionado mapeamento para abrir arquivos em abas
+	  mappings = {
+	    i = {
+	      ["<CR>"] = function(prompt_bufnr)
+		local action_state = require('telescope.actions.state')
+		local actions = require('telescope.actions')
+		local selection = action_state.get_selected_entry()
+		actions.close(prompt_bufnr)
+		
+		-- Verifica se o buffer já está aberto
+		local bufnr = vim.fn.bufnr(selection.path)
+		if bufnr ~= -1 then
+		  -- Se o buffer já estiver aberto, verifica se já está em uma aba
+		  local tabnr = nil
+		  for i = 1, vim.fn.tabpagenr('$') do
+		    for _, win in ipairs(vim.fn.tabpagebuflist(i)) do
+		      if win == bufnr then
+		        tabnr = i
+		        break
+		      end
+		    end
+		    if tabnr then break end
+		  end
 
-                -- Verifica se o buffer já está aberto
-                local bufnr = vim.fn.bufnr(selection.path)
-                if bufnr ~= -1 then
-                  -- Se o buffer já estiver aberto, apenas mude para ele
-                  vim.cmd(string.format("tab sbuffer %d", bufnr))
-                else
-                  -- Se o buffer não estiver aberto, abra em uma nova aba
-                  vim.cmd(string.format("tabedit %s", selection.path))
-                end
-              end,
-            },
-          },
-        },
+		  if tabnr then
+		    -- Se o buffer já está em uma aba, muda para ela
+		    vim.cmd(string.format("tabnext %d", tabnr))
+		  else
+		    -- Se o buffer não está em uma aba, abre em uma nova aba
+		    vim.cmd(string.format("tab sbuffer %d", bufnr))
+		  end
+		else
+		  -- Se o buffer não estiver aberto, abre em uma nova aba
+		  vim.cmd(string.format("tabedit %s", selection.path))
+		end
+	      end,
+	    },
+	  },
+	},
+
         pickers = {},
         extensions = {
           ['ui-select'] = {
