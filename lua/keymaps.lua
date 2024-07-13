@@ -57,9 +57,9 @@ vim.keymap.set('i', 'jk', '<ESC>')
 -- Agora ctrl z está desativado, para não sair da sessão do neovim sem querer.
 vim.keymap.set('n', '<C-z>', '<Nop>', { noremap = true, silent = true })
 
-
 -- Navegar para a próxima aba/tab usando a tecla Tab
 vim.api.nvim_set_keymap('n', '<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
 
 -- Salvar o buffer atual com Ctrl+s
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
@@ -68,4 +68,3 @@ vim.api.nvim_set_keymap('i', '<C-s>', '<C-o>:w<CR>', { noremap = true, silent = 
 -- Salvar todos os buffers com Ctrl+Shift+s
 vim.api.nvim_set_keymap('n', '<C-S-s>', ':wa<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-S-s>', '<C-o>:wa<CR>', { noremap = true, silent = true })
-
