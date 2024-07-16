@@ -7,3 +7,8 @@ vim.g.maplocalleader = ' '
 -- Defina como verdadeiro se você tiver uma fonte Nerd instalada e selecionada no terminal
 vim.g.have_nerd_font = true
 
+-- Desativa o netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+
