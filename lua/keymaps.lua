@@ -65,7 +65,3 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-s>', '<C-o>:w<CR>', { noremap = true, silent = true })
 
--- Salvar todos os buffers com Ctrl+Alt+s
-vim.api.nvim_set_keymap('n', '<C-A-s>', ':wa<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-A-s>', '<C-o>:wa<CR>', { noremap = true, silent = true })
-
