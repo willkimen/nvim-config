@@ -26,7 +26,7 @@ return {
           opts.buffer = bufnr
           vim.keymap.set(mode, l, r, opts)
         end
-	 --[[Desativado as teclas de atalho, pois já tenho ferramenta fora do neovim para isso.
+	 
         -- Navigation
         map('n', ']c', function()
           if vim.wo.diff then
@@ -67,7 +67,7 @@ return {
         end, { desc = 'git [D]iff against last commit' })
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' }) ]]
+        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
         
       end,
     },
