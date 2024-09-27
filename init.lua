@@ -35,6 +35,9 @@ require('lazy').setup({
   require 'plugins.neo-tree',
   require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
   'tpope/vim-dotenv',
+  require 'plugins.lazydev',
+  require 'plugins.luvit-meta',
+  
 }, {
   ui = {
   -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
