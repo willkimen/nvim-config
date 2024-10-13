@@ -1,51 +1,61 @@
 # My kickstart.nvim
 
-
-
-### Get clone
+## Get clone
 
 ```sh
 git clone git@github.com:willkimen/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
+## Nvim installation
 
-### Install External Dependencies
-
-External Requirements:
-- Basic utils: `git`, `make`, `unzip`, C Compiler (`gcc`)
-- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
-- Clipboard tool (xclip/xsel/win32yank or other depending on platform)
-- A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
-  - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
-- Language Setup:
-  - If want to write Typescript, you need `npm`
-  - If want to write Golang, you will need `go`
-  - etc.
-
-
-
-</details>
-
-### Post Installation
-
-Start Neovim
+Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
 
 ```sh
-nvim
+apt -y curl 
 ```
 
-That's it! Lazy will install all the plugins you have. Use `:Lazy` to view
-current plugin status. Hit `q` to close the window.
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+```
 
-Read through the `init.lua` file in your configuration folder for more
-information about extending and exploring Neovim. That also includes
-examples of adding popularly requested plugins.
+```sh
+rm -rf /opt/nvim
+```
+
+```sh
+tar -C /opt -xzf nvim-linux64.tar.gz
+```
+
+### Set Enviroment
+
+```sh
+nano ~/.bashrc
+```
+
+Add this line.
+
+```sh
+export PATH="$PATH:/opt/nvim-linux64/bin"
+```
+
+```sh
+source ~/.bashrc
+```
+
+## Dependecies install
+
+```sh
+apt install -y git make unzip gcc ripgrep
+```
+
+Link: [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+```
+
+```sh
+nvm install 20
+```
 
 
-### Getting Started
-
-[The Only Video You Need to Get Started with Neovim](https://youtu.be/m8C0Cq9Uv9o)
-
-# Atenção
-
-No arquivo do plugin nvim-cmp, eu ativei snippets para todas as linguagens suportadas. Se caso fique lento alguma coisa no neovim, ative somente para linguagens específicas.
