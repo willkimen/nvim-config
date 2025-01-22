@@ -23,7 +23,7 @@ require('lazy').setup({
   require 'plugins.nvim-lspconfig',
   require 'plugins.conform',
   require 'plugins.nvim-cmp',
-  require 'plugins.theme-tokyonight',
+  -- require 'plugins.theme-tokyonight',
   -- require 'plugins.theme-catppuccin',
   require 'plugins.todo-comments',
   require 'plugins.mini',
@@ -37,6 +37,7 @@ require('lazy').setup({
   'tpope/vim-dotenv',
   require 'plugins.lazydev',
   require 'plugins.luvit-meta',
+  require 'plugins.theme-nordic',
   
 }, {
   ui = {
