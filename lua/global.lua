@@ -10,5 +10,3 @@ vim.g.have_nerd_font = true
 -- Desativa o netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-

@@ -43,7 +43,7 @@ return {
       ensure_installed = {
         -- Atualize isso para garantir que você tenha os depuradores para as linguagens que você deseja
         'delve', -- for Go
-  	'debugpy', -- for Python
+        'debugpy', -- for Python
       },
     }
 
@@ -94,9 +94,8 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
-    
+
     -- Install python specific config
-    require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+    require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
   end,
 }
-

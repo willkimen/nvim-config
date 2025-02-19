@@ -3,4 +3,3 @@
 --
 -- Veja o README do kickstart.nvim para mais informações
 return {}
-

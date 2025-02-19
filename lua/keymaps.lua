@@ -15,10 +15,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 -- Abre a lista de quickfix com mensagens de diagnóstico.
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
-
-
-
--- Saia do modo terminal no terminal integrado com um atalho que é um pouco mais fácil para as pessoas descobrirem. 
+-- Saia do modo terminal no terminal integrado com um atalho que é um pouco mais fácil para as pessoas descobrirem.
 -- Caso contrário, você normalmente precisa pressionar <C-\><C-n>, o que
 -- não é o que alguém adivinharia sem um pouco mais de experiência.
 
@@ -28,16 +25,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --Pressionar Esc duas vezes no modo terminal muda para o modo normal.
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-
-
-
 -- TIP: Desativa as teclas de seta no modo normal
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
-
 
 -- Atalhos de teclado para facilitar a navegação dividida.
 --  Use CTRL+<hjkl> para alternar entre janelas
@@ -73,6 +65,3 @@ vim.api.nvim_set_keymap('n', '<C-j>', ':m .+1<CR>==', { noremap = true, silent =
 -- Para modo visual
 vim.api.nvim_set_keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-
-
-

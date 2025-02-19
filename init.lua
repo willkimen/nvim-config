@@ -1,4 +1,4 @@
-require 'global'  -- Mantenha por primeiro, principalmente antes dos plugins
+require 'global' -- Mantenha por primeiro, principalmente antes dos plugins
 require 'keymaps'
 require 'options'
 require 'autocmd'
@@ -16,7 +16,7 @@ require 'lazy-setup'
 ]]
 
 require('lazy').setup({
-  require 'plugins.vim-sleuth', 
+  require 'plugins.vim-sleuth',
   require 'plugins.comment',
   require 'plugins.which-key',
   require 'plugins.telescope',
@@ -38,11 +38,10 @@ require('lazy').setup({
   require 'plugins.lazydev',
   require 'plugins.luvit-meta',
   require 'plugins.theme-nordic',
-  
 }, {
   ui = {
-  -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
-  -- os ícones Nerd Font padrão definidos pelo lazy.nvim. Caso contrário, defina uma tabela com ícones Unicode.
+    -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
+    -- os ícones Nerd Font padrão definidos pelo lazy.nvim. Caso contrário, defina uma tabela com ícones Unicode.
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',

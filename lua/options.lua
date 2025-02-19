@@ -7,7 +7,6 @@
 -- Set highlight on search, mas limpe ao pressionar <Esc> no modo normal
 vim.opt.hlsearch = true
 
-
 -- Numera as linhas
 vim.opt.number = true
 -- Ativa linhas relativas
@@ -62,10 +61,3 @@ vim.opt.cursorline = true
 
 -- Número mínimo de linhas da tela a serem mantidas acima e abaixo do cursor.
 vim.opt.scrolloff = 10
-
-
-
-
-
-
-

@@ -8,7 +8,7 @@
    - See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim  para mais informações
  ]]
 
--- Define o caminho para onde o plugin lazy.nvim será armazenado    
+-- Define o caminho para onde o plugin lazy.nvim será armazenado
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 -- Verifica se o diretório do plugin existe. Se não existir, clona o repositório do GitHub
 if not vim.loop.fs_stat(lazypath) then
@@ -19,4 +19,3 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 -- Adiciona o caminho do plugin ao runtime path do Neovim para que ele seja carregado
 vim.opt.rtp:prepend(lazypath)
-
