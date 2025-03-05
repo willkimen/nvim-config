@@ -38,6 +38,7 @@ require('lazy').setup({
   require 'plugins.lazydev',
   require 'plugins.luvit-meta',
   require 'plugins.theme-nordic',
+  require 'plugins.flutter_tools',
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
