@@ -9,10 +9,6 @@ return { -- ############### Configuração & Plugins LSP ###############
     -- Atualizações de status úteis para LSP.
     -- NOTA: `opts = {}` é o mesmo que chamar `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
-
-    -- `neodev` configura o Lua LSP para sua configuração do Neovim, tempo de execução e plugins
-    -- usado para autocompletar, anotações e assinaturas das APIs do Neovim
-    { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
     -- Breve aparte: **O que é LSP?**
