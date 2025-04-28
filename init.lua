@@ -24,7 +24,7 @@ require('lazy').setup({
   require 'plugins.conform',
   require 'plugins.nvim-cmp',
   -- require 'plugins.theme-tokyonight',
-  -- require 'plugins.theme-catppuccin',
+  require 'plugins.theme-catppuccin',
   require 'plugins.todo-comments',
   require 'plugins.mini',
   require 'plugins.nvim-treesitter',
@@ -37,7 +37,7 @@ require('lazy').setup({
   'tpope/vim-dotenv',
   require 'plugins.lazydev',
   require 'plugins.luvit-meta',
-  require 'plugins.theme-nordic',
+  -- require 'plugins.theme-nordic',
   require 'plugins.flutter_tools',
 }, {
   ui = {
