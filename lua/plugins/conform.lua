@@ -27,12 +27,14 @@ return { -- ############## Autoformat ###########################
         'black',
         stop_after_first = false, -- Adiciona essa linha, se true, para no primeiro formatador, se false, vai passar por todos os formatores
       },
+      go = { 'gofmt', 'goimports' }, -- Adiciona os formatadores para Go
     },
     linters_by_ft = {
       python = {
         'flake8',
         args = { '--max-line-length', '88', '--ignore', 'E203,W503' },
       },
+      go = { 'golangci-lint' }, -- Adiciona o linter para Go
     },
   },
 }
