@@ -5,19 +5,9 @@
 -- Pressionar Esc no modo normal limpa o destaque da pesquisa.
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Atalhos de diagnóstico
--- [d -> Vai para a mensagem de diagnóstico anterior.
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
--- ]d -> Vai para a próxima mensagem de diagnóstico.
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
--- Mostra mensagens de erro de diagnóstico em um popup.
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+-- ########## Atalhos de diagnóstico ##############
 -- Abre a lista de quickfix com mensagens de diagnóstico.
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
--- Saia do modo terminal no terminal integrado com um atalho que é um pouco mais fácil para as pessoas descobrirem.
--- Caso contrário, você normalmente precisa pressionar <C-\><C-n>, o que
--- não é o que alguém adivinharia sem um pouco mais de experiência.
 
 -- NOTE: Isso não funcionará em todos os emuladores de terminal/tmux/etc. Experimente seu próprio mapeamento
 -- ou apenas use <C-\><C-n> para sair do modo terminal
@@ -25,6 +15,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --Pressionar Esc duas vezes no modo terminal muda para o modo normal.
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- [d -> Vai para a mensagem de diagnóstico anterior.
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+-- ]d -> Vai para a próxima mensagem de diagnóstico.
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+-- Mostra mensagens de erro de diagnóstico em um popup.
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+
+-- ########### Movimentação ##############
 -- TIP: Desativa as teclas de seta no modo normal
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')

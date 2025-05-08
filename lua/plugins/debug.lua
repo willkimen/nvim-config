@@ -1,68 +1,109 @@
 -- debug.lua
 --
--- Mostra como usar o plugin DAP para depurar seu código.
+-- Shows how to use the DAP plugin to debug your code.
 --
--- Principalmente focado em configurar o depurador para Go, mas pode
--- ser estendido para outras linguagens também. É por isso que se chama
--- kickstart.nvim e não kitchen-sink.nvim ;)
+-- Primarily focused on configuring the debugger for Go, but can
+-- be extended to other languages as well. That's why it's called
+-- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
-  -- NOTA: Sim, você pode instalar novos plugins aqui!
+  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTA: E você pode especificar dependências também
+  -- NOTE: And you can specify dependencies as well
   dependencies = {
-    -- Cria uma bela interface de depuração
+    -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
 
-    -- Dependência necessária para nvim-dap-ui
+    -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
 
-    -- Instala os adaptadores de depuração para você
+    -- Installs the debug adapters for you
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
-    -- Adicione seus próprios depuradores aqui
+    -- Add your own debuggers here
     'leoluz/nvim-dap-go',
-    'mfussenegger/nvim-dap-python',
+  },
+  keys = {
+    -- Basic debugging keymaps, feel free to change to your liking!
+    {
+      '<F5>',
+      function()
+        require('dap').continue()
+      end,
+      desc = 'Debug: Start/Continue',
+    },
+    {
+      '<F1>',
+      function()
+        require('dap').step_into()
+      end,
+      desc = 'Debug: Step Into',
+    },
+    {
+      '<F2>',
+      function()
+        require('dap').step_over()
+      end,
+      desc = 'Debug: Step Over',
+    },
+    {
+      '<F3>',
+      function()
+        require('dap').step_out()
+      end,
+      desc = 'Debug: Step Out',
+    },
+    {
+      '<leader>b',
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = 'Debug: Toggle Breakpoint',
+    },
+    {
+      '<leader>B',
+      function()
+        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = 'Debug: Set Breakpoint',
+    },
+    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+    {
+      '<F7>',
+      function()
+        require('dapui').toggle()
+      end,
+      desc = 'Debug: See last session result.',
+    },
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
 
     require('mason-nvim-dap').setup {
-      -- Faz o melhor esforço para configurar os vários depuradores com
-      -- configurações de depuração razoáveis
+      -- Makes a best effort to setup the various debuggers with
+      -- reasonable debug configurations
       automatic_installation = true,
 
-      -- Você pode fornecer configuração adicional para os manipuladores,
-      -- veja o README do mason-nvim-dap para mais informações
+      -- You can provide additional configuration to the handlers,
+      -- see mason-nvim-dap README for more information
       handlers = {},
 
-      -- Você precisará verificar se tem as coisas necessárias instaladas
-      -- online, por favor, não me pergunte como instalá-las :)
+      -- You'll need to check that you have the required things installed
+      -- online, please don't ask me how to install them :)
       ensure_installed = {
-        -- Atualize isso para garantir que você tenha os depuradores para as linguagens que você deseja
-        'delve', -- for Go
-        'debugpy', -- for Python
+        -- Update this to ensure that you have the debuggers for the langs you want
+        'delve',
       },
     }
 
-    -- Mapas de teclas básicos para depuração, sinta-se à vontade para alterar conforme sua preferência!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Depurar: Iniciar/Continuar' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Depurar: Entrar' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Depurar: Passar por cima' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Depurar: Sair' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Depurar: Alternar Ponto de Interrupção' })
-    vim.keymap.set('n', '<leader>B', function()
-      dap.set_breakpoint(vim.fn.input 'Condição do Ponto de Interrupção: ')
-    end, { desc = 'Depurar: Definir Ponto de Interrupção' })
-
-    -- Configuração da UI do Dap
-    -- Para mais informações, veja |:help nvim-dap-ui|
+    -- Dap UI setup
+    -- For more information, see |:help nvim-dap-ui|
     dapui.setup {
-      -- Defina ícones para caracteres que são mais propensos a funcionar em qualquer terminal.
-      --    Sinta-se à vontade para remover ou usar os que você gostar mais! :)
-      --    Não sinta que essas são boas escolhas.
+      -- Set icons to characters that are more likely to work in every terminal.
+      --    Feel free to remove or use ones that you like more! :)
+      --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
       controls = {
         icons = {
@@ -79,23 +120,29 @@ return {
       },
     }
 
-    -- Alternar para ver o resultado da última sessão. Sem isso, você não pode ver a saída da sessão em caso de exceção não tratada.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Depurar: Ver resultado da última sessão.' })
+    -- Change breakpoint icons
+    -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+    -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    -- local breakpoint_icons = vim.g.have_nerd_font
+    --     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+    --   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+    -- for type, icon in pairs(breakpoint_icons) do
+    --   local tp = 'Dap' .. type
+    --   local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
+    --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+    -- end
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Instalar configuração específica para golang
+    -- Install golang specific config
     require('dap-go').setup {
       delve = {
-        -- No Windows, delve deve ser executado anexado ou ele falha.
-        -- Veja https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+        -- On Windows delve must be run attached or it crashes.
+        -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
         detached = vim.fn.has 'win32' == 0,
       },
     }
-
-    -- Install python specific config
-    require('dap-python').setup '~/.virtualenvs/debugpy/bin/python'
   end,
 }

@@ -1,21 +1,11 @@
---[[ ##### Configuração do lazy.nvim no Neovim #####
-   Este código configura o lazy.nvim no Neovim, verificando se o repositório do plugin existe no sistema de arquivos local 
-   e clonando-o se não existir, e então o adiciona ao runtime path do Neovim.
-   O lazy.nvim é um plugin de gerenciamento de plugins para o Neovim. Ele oferece uma maneira eficiente e moderna de gerenciar 
-   e carregar  plugins em seu ambiente Neovim.
-   
-   
-   - See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim  para mais informações
- ]]
-
--- Define o caminho para onde o plugin lazy.nvim será armazenado
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
--- Verifica se o diretório do plugin existe. Se não existir, clona o repositório do GitHub
-if not vim.loop.fs_stat(lazypath) then
-  -- URL do repositório do plugin lazy.nvim
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  -- Clona o repositório do plugin usando o comando git
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
 end ---@diagnostic disable-next-line: undefined-field
--- Adiciona o caminho do plugin ao runtime path do Neovim para que ele seja carregado
 vim.opt.rtp:prepend(lazypath)

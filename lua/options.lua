@@ -4,13 +4,8 @@
 -- NOTE: Você pode alterar essas opções como desejar!
 --  Para mais opções, você pode ver `:help option-list`
 
--- Set highlight on search, mas limpe ao pressionar <Esc> no modo normal
-vim.opt.hlsearch = true
-
 -- Numera as linhas
 vim.opt.number = true
--- Ativa linhas relativas
-vim.opt.relativenumber = true
 
 -- Ative o modo mouse, pode ser útil para redimensionar divisões, por exemplo!
 vim.opt.mouse = 'a'
@@ -21,7 +16,9 @@ vim.opt.showmode = false
 -- Sincronize a área de transferência entre o sistema operacional e o Neovim.
 --  Remova esta opção se desejar que a área de transferência do sistema operacional permaneça independente.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
 -- Habilita quebra de indentação
 vim.opt.breakindent = true
@@ -61,3 +58,17 @@ vim.opt.cursorline = true
 
 -- Número mínimo de linhas da tela a serem mantidas acima e abaixo do cursor.
 vim.opt.scrolloff = 10
+
+-- Ativa a opção 'confirm' no Neovim
+-- Quando estiver editando um arquivo e tentar realizar uma operação que normalmente falharia por haver alterações não salvas
+-- (como sair com :q, abrir outro arquivo, etc), o Neovim exibirá uma janela perguntando se você deseja salvar as alterações.
+-- Isso evita perda de trabalho e torna a experiência mais interativa, semelhante a editores gráficos.
+-- Veja também :help 'confirm' para mais detalhes.
+vim.opt.confirm = true
+
+-- ####### Minhas opcoes que nao estao no oficial ######
+-- Set highlight on search, mas limpe ao pressionar <Esc> no modo normal
+vim.opt.hlsearch = true
+
+-- Ativa linhas relativas
+vim.opt.relativenumber = true

@@ -1,6 +1,6 @@
 require 'global' -- Mantenha por primeiro, principalmente antes dos plugins
 require 'keymaps'
-require 'options'
+require 'options' -- Mantenha por primeiro, principalmente antes dos plugins
 require 'autocmd'
 require 'lazy-setup'
 
@@ -22,7 +22,7 @@ require('lazy').setup({
   require 'plugins.telescope',
   require 'plugins.nvim-lspconfig',
   require 'plugins.conform',
-  require 'plugins.nvim-cmp',
+  require 'plugins.saghen-blink-cmp',
   -- require 'plugins.theme-tokyonight',
   require 'plugins.theme-catppuccin',
   require 'plugins.todo-comments',
@@ -30,7 +30,7 @@ require('lazy').setup({
   require 'plugins.nvim-treesitter',
   require 'plugins.debug',
   require 'plugins.indent_line',
-  -- require 'plugins.lint',
+  require 'plugins.lint',
   require 'plugins.autopairs',
   require 'plugins.neo-tree',
   require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
