@@ -18,7 +18,6 @@ require 'lazy-setup'
 require('lazy').setup({
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
   require 'plugins.debug', -- Debug
-  require 'plugins.gitsigns', -- Atalhos relacionado a git
   require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
   require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
   -- ============ Formatação e Código =========
@@ -44,6 +43,7 @@ require('lazy').setup({
   -- require 'plugins.theme-nordic',
   -- require 'plugins.theme-tokyonight',
   -- require 'plugins.flutter_tools',
+  -- require 'plugins.gitsigns', -- Atalhos relacionado a git
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
