@@ -16,48 +16,40 @@ require 'lazy-setup'
 ]]
 
 require('lazy').setup({
-  require 'plugins.vim-sleuth',
-  require 'plugins.comment',
-  require 'plugins.which-key',
-  require 'plugins.telescope',
-  require 'plugins.nvim-lspconfig',
-  require 'plugins.conform',
-  require 'plugins.saghen-blink-cmp',
-  -- require 'plugins.theme-tokyonight',
-  require 'plugins.theme-catppuccin',
-  require 'plugins.todo-comments',
-  require 'plugins.mini',
+  require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
+  require 'plugins.debug', -- Debug
+  require 'plugins.gitsigns', -- Atalhos relacionado a git
+  require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
+  require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
+  -- ============ Formatação e Código =========
+  require 'plugins.saghen-blink-cmp', -- autocomplete
+  require 'plugins.comment', -- Cria comentarios no codigo por meio de comandos
+  require 'plugins.autopairs', -- Cria automaticamente pares de [], {} e etc
+  require 'plugins.lint', -- Lint
+  require 'plugins.conform', -- Formatadores
+  require 'plugins.vim-sleuth', -- Indentacao
+  require 'plugins.todo-comments', -- TODO coloridos em comentarios
+  require 'plugins.indent_line', -- Guias visuais de indentacao
+  require 'plugins.mini', -- Lida com o codigo como objetos, podendo navegar e modificar de forma mais simples
+  'tpope/vim-dotenv', -- Carrega variáveis de arquivos `.env` para o ambiente do Vim/Neovim.
+  -- ============== TS e LSP ==========
   require 'plugins.nvim-treesitter',
-  require 'plugins.debug',
-  require 'plugins.indent_line',
-  require 'plugins.lint',
-  require 'plugins.autopairs',
+  require 'plugins.nvim-lspconfig',
+  -- =========== Navegação ===========
   require 'plugins.neo-tree',
-  require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
-  'tpope/vim-dotenv',
-  require 'plugins.lazydev',
-  require 'plugins.luvit-meta',
+  require 'plugins.telescope',
+  -- ======== Tema ==============
+  require 'plugins.theme-catppuccin',
+  -- ========== Desativados ============
   -- require 'plugins.theme-nordic',
-  require 'plugins.flutter_tools',
+  -- require 'plugins.theme-tokyonight',
+  -- require 'plugins.flutter_tools',
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
     -- os ícones Nerd Font padrão definidos pelo lazy.nvim. Caso contrário, defina uma tabela com ícones Unicode.
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
+    -- Eu removi os icones que vem por padrao e deixei a tabela em braco, ali na ultima tabela
+    icons = vim.g.have_nerd_font and {} or {},
   },
 })
 
