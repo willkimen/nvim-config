@@ -44,8 +44,15 @@ vim.keymap.set('i', 'jk', '<ESC>')
 vim.keymap.set('n', '<C-z>', '<Nop>', { noremap = true, silent = true })
 
 -- Navegar para a próxima aba/tab usando a tecla Tab
-vim.api.nvim_set_keymap('n', '<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
+-- Estou usando o plugin barbar, essa configuração não é mais útil.
+-- Barbar não usa tabas do nvim, e sim  buffers para representar as abas.
+-- Por conta disso, essa configuração até funciona, mas não tão bem.
+-- Por conta disso estou usando a nova configuração
+-- vim.api.nvim_set_keymap('n', '<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
 
 -- Salvar o buffer atual com Ctrl+s
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
