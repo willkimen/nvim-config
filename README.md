@@ -6,43 +6,39 @@
 git clone git@github.com:willkimen/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
-## Nvim installation
+## Instalação do Neovim 0.11 
+
+> Esse link te leva para opção de Pre-built archives, que é a maneira que eu gosto.
 
 Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
 
-```sh
-apt -y curl 
+```bash
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ```
 
-```sh
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-```
+> Remova o diretório relativo ao neovim antigo no diretório opt/
 
-```sh
-rm -rf /opt/nvim
-```
 
-```sh
-tar -C /opt -xzf nvim-linux64.tar.gz
-```
-
-### Set Enviroment
-
-```sh
+```python
+micro ~/.bashrc
 nano ~/.bashrc
 ```
 
-Add this line.
-
-```sh
-export PATH="$PATH:/opt/nvim-linux64/bin"
+```python
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 ```
 
-```sh
+> Insira essa linha, se você está atualizando para um nova versão, a linha 
+com versão antiga já existe, então substitua pela mais nova.
+
+```python
 source ~/.bashrc
 ```
 
-## Dependecies install
+
+## Instalando as dependências 
 
 ```sh
 apt install -y git make unzip gcc ripgrep
@@ -57,3 +53,11 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```sh
 nvm install 20
 ```
+
+## Ponto importante  
+Em ~/.local/share/ existe um diretório chamado nvim/, você pode remover esse diretório 
+se tiver com problema de erros que não desaparecem mesmo atualiznado plugin. Quando você rodar Lazy update ou 
+coisa do tipo, ele será criado novamente, mas agora com uma instalação limpa do plugins. 
+Eu tinha atualizando um plugin, eu acho que era o mason, e estava dando problema. A solucão
+era atualizando o nvim para nvim 0.11, mas mesmo atualizando, gera outros erros. Eu apaguei esse diretorio, 
+atualizei novamente e funcionou.
