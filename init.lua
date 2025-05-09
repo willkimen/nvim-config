@@ -16,10 +16,23 @@ require 'lazy-setup'
 ]]
 
 require('lazy').setup({
+  -- ============== TS e LSP ==========
+  require 'plugins.nvim-treesitter',
+  require 'plugins.nvim-lspconfig',
+
+  -- =========== Navegação ===========
+  require 'plugins.neo-tree',
+  require 'plugins.telescope',
+
+  -- ======== Tema ==============
+  require 'plugins.theme-catppuccin',
+
+  -- ============== Others ==========
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
   require 'plugins.debug', -- Debug
   require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
   require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
+
   -- ============ Formatação e Código =========
   require 'plugins.saghen-blink-cmp', -- autocomplete
   require 'plugins.comment', -- Cria comentarios no codigo por meio de comandos
@@ -27,23 +40,16 @@ require('lazy').setup({
   require 'plugins.lint', -- Lint
   require 'plugins.conform', -- Formatadores
   require 'plugins.vim-sleuth', -- Indentacao
-  require 'plugins.todo-comments', -- TODO coloridos em comentarios
+  require 'plugins.todo-comments', -- todo coloridos em comentarios
   require 'plugins.indent_line', -- Guias visuais de indentacao
   require 'plugins.mini', -- Lida com o codigo como objetos, podendo navegar e modificar de forma mais simples
   'tpope/vim-dotenv', -- Carrega variáveis de arquivos `.env` para o ambiente do Vim/Neovim.
-  -- ============== TS e LSP ==========
-  require 'plugins.nvim-treesitter',
-  require 'plugins.nvim-lspconfig',
-  -- =========== Navegação ===========
-  require 'plugins.neo-tree',
-  require 'plugins.telescope',
-  -- ======== Tema ==============
-  require 'plugins.theme-catppuccin',
+
   -- ========== Desativados ============
   -- require 'plugins.theme-nordic',
   -- require 'plugins.theme-tokyonight',
   -- require 'plugins.flutter_tools',
-  -- require 'plugins.gitsigns', -- Atalhos relacionado a git
+  require 'plugins.gitsigns', -- Atalhos relacionado a git
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
