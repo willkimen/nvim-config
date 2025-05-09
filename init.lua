@@ -24,8 +24,9 @@ require('lazy').setup({
   require 'plugins.neo-tree',
   require 'plugins.telescope',
 
-  -- ======== Tema ==============
+  -- ======== Estilo ==============
   require 'plugins.theme-catppuccin',
+  require 'plugins.barbar',
 
   -- ============== Others ==========
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
