@@ -5,7 +5,7 @@
 
 --[[  ########## Highlight para yank ################
   Este código Lua cria um autocomando no Neovim que destaca o texto copiado (yank) assim que ele é copiado. 
- - See `:help vim.highlight.on_yank()`
+ - See `:help vim.hl.on_yank()`
  
  
 ]]
@@ -18,6 +18,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   -- Define a função de callback que será executada quando o evento 'TextYankPost' ocorrer
   callback = function()
     -- Chama a função que destaca o texto copiado
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })

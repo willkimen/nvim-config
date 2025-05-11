@@ -40,7 +40,7 @@ require('lazy').setup({
   require 'plugins.autopairs', -- Cria automaticamente pares de [], {} e etc
   require 'plugins.lint', -- Lint
   require 'plugins.conform', -- Formatadores
-  require 'plugins.vim-sleuth', -- Indentacao
+  require 'plugins.guess-indent', -- Indentacao
   require 'plugins.todo-comments', -- todo coloridos em comentarios
   require 'plugins.indent_line', -- Guias visuais de indentacao
   require 'plugins.mini', -- Lida com o codigo como objetos, podendo navegar e modificar de forma mais simples

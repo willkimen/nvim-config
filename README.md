@@ -41,7 +41,7 @@ source ~/.bashrc
 ## Instalando as dependências 
 
 ```sh
-apt install -y git make unzip gcc ripgrep
+apt install -y git make unzip gcc ripgrep fd-find
 ```
 
 Link: [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
