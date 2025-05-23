@@ -27,6 +27,7 @@ require('lazy').setup({
   -- ======== Estilo ==============
   require 'plugins.theme-catppuccin',
   require 'plugins.barbar',
+  require 'plugins.gitsigns', -- Atalhos relacionado a git
 
   -- ============== Others ==========
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
@@ -50,7 +51,6 @@ require('lazy').setup({
   -- require 'plugins.theme-nordic',
   -- require 'plugins.theme-tokyonight',
   -- require 'plugins.flutter_tools',
-  require 'plugins.gitsigns', -- Atalhos relacionado a git
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
