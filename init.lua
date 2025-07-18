@@ -19,23 +19,26 @@ require('lazy').setup({
   -- ============== TS e LSP ==========
   require 'plugins.nvim-treesitter',
   require 'plugins.nvim-lspconfig',
+  require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
 
   -- =========== Navegação ===========
   require 'plugins.neo-tree',
   require 'plugins.telescope',
 
   -- ======== Estilo ==============
-  require 'plugins.theme-catppuccin',
+  -- require 'plugins.theme-catppuccin',
+  -- require 'plugins.theme-nordic',
+  require 'plugins.theme-tokyonight',
   require 'plugins.barbar',
   require 'plugins.gitsigns', -- Atalhos relacionado a git
 
   -- ============== Others ==========
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
   require 'plugins.debug', -- Debug
-  require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
-  require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
+  -- require 'plugins.flutter_tools',
 
   -- ============ Formatação e Código =========
+  require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
   require 'plugins.saghen-blink-cmp', -- autocomplete
   require 'plugins.comment', -- Cria comentarios no codigo por meio de comandos
   require 'plugins.autopairs', -- Cria automaticamente pares de [], {} e etc
@@ -46,11 +49,6 @@ require('lazy').setup({
   require 'plugins.indent_line', -- Guias visuais de indentacao
   require 'plugins.mini', -- Lida com o codigo como objetos, podendo navegar e modificar de forma mais simples
   'tpope/vim-dotenv', -- Carrega variáveis de arquivos `.env` para o ambiente do Vim/Neovim.
-
-  -- ========== Desativados ============
-  -- require 'plugins.theme-nordic',
-  -- require 'plugins.theme-tokyonight',
-  -- require 'plugins.flutter_tools',
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
