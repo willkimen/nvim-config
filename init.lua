@@ -26,9 +26,9 @@ require('lazy').setup({
   require 'plugins.telescope',
 
   -- ======== Estilo ==============
-  -- require 'plugins.theme-catppuccin',
+  require 'plugins.theme-catppuccin',
   -- require 'plugins.theme-nordic',
-  require 'plugins.theme-tokyonight',
+  -- require 'plugins.theme-tokyonight',
   require 'plugins.barbar',
   require 'plugins.gitsigns', -- Atalhos relacionado a git
 

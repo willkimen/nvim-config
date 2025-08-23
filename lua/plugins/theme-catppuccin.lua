@@ -5,7 +5,7 @@ return {
     require('catppuccin').setup {
       -- Configurações opcionais
       flavour = 'mocha', -- Opções: latte, frappe, macchiato, mocha
-      transparent_background = true,
+      transparent_background = false,
       styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = { 'italic' }, -- Change the style of comments
         conditionals = { 'italic' },
