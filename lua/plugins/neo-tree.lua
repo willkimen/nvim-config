@@ -14,6 +14,9 @@ return {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    window = {
+      position = 'float', -- define o modo flutuante como padrão
+    },
     filesystem = {
       window = {
         mappings = {
