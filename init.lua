@@ -20,6 +20,7 @@ require('lazy').setup({
   require 'plugins.nvim-treesitter',
   require 'plugins.nvim-lspconfig',
   require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
+  require 'plugins.flutter_tools',
 
   -- =========== Navegação ===========
   require 'plugins.neo-tree',
@@ -35,7 +36,6 @@ require('lazy').setup({
   -- ============== Others ==========
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
   require 'plugins.debug', -- Debug
-  -- require 'plugins.flutter_tools',
 
   -- ============ Formatação e Código =========
   require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
