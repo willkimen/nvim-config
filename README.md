@@ -1,20 +1,22 @@
-# My kickstart.nvim
+# Instalação
 
-## Get clone
+## Clone o projeto antes de tudo
 
 ```sh
 git clone git@github.com:willkimen/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
-## Instalação do Neovim 0.11
+## Instalação do Neovim no host
+
+### Instalando o neovim
 
 > Esse link te leva para opção de Pre-built archives, que é a maneira que eu gosto.
 
 Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
 
 ```bash
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz &&
+sudo rm -rf /opt/nvim &&
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ```
 
@@ -29,14 +31,14 @@ nano ~/.bashrc
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 ```
 
-> Insira essa linha, se você está atualizando para um nova versão, a linha
+> Insira essa linha. Se você está atualizando para um nova versão, a linha
 com versão antiga já existe, então substitua pela mais nova.
 
 ```python
 source ~/.bashrc
 ```
 
-## Instalando as dependências
+### Instalando as dependências
 
 ```sh
 apt install -y git make unzip gcc ripgrep fd-find xclip fonts-noto-color-emoji
@@ -45,14 +47,32 @@ apt install -y git make unzip gcc ripgrep fd-find xclip fonts-noto-color-emoji
 Link: [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
+\. "$HOME/.nvm/nvm.sh" &&
+nvm install 22 &&
+nvm -v &&
+npm -v &&
+node -v
 ```
+
+(opcional) Instala globalmente o lint para markdown:
 
 ```sh
-nvm install 20
+npm install -g markdownlint-cli
 ```
 
-## Ponto importante
+## Instalando em um container Docker
+
+Na raiz do projeto execute esse comando, troque os nomes `nvi` e `nvc` se quiser.
+
+```sh
+docker build \
+  --build-arg NVM_VERSION=0.40.3 \
+  --build-arg NODE_VERSION=24 \
+  -t nvi . && docker run -it --name nvc nvi
+```
+
+## Observação
 
 Em ~/.local/share/ existe um diretório chamado nvim/, você pode remover esse diretório
 se tiver com problemas de erros que não desaparecem mesmo atualizando os plugins.
