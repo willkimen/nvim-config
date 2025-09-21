@@ -72,6 +72,18 @@ docker build \
   -t nvi . && docker run -it --name nvc nvi
 ```
 
+### Instalando uv
+
+```sh
+install_uv.sh && source $HOME/.local/bin/env
+```
+
+### Instalando go
+
+```sh
+install_go.sh && source /etc/bash.bashrc
+```
+
 ## Observação
 
 Em ~/.local/share/ existe um diretório chamado nvim/, você pode remover esse diretório
