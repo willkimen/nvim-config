@@ -55,33 +55,28 @@ npm -v &&
 node -v
 ```
 
-(opcional) Instala globalmente o lint para markdown:
-
-```sh
-npm install -g markdownlint-cli
-```
-
 ## Instalando em um container Docker
 
-Na raiz do projeto execute esse comando, troque os nomes `nvi` e `nvc` se quiser.
+> A instalação do Node é importante, pois alguns plugins necessitam.  
+> Para rodar esses comandos, só funcionam no Linux, pois o Make só tem para Linux.  
+> Para executar as configurações, dentro do container execute o comando 'nvim'.  
+
+### Instalando somente o neovim + NVM/Node
 
 ```sh
-docker build \
-  --build-arg NVM_VERSION=0.40.3 \
-  --build-arg NODE_VERSION=24 \
-  -t nvi . && docker run -it --name nvc nvi
+make create_nvim
 ```
 
-### Instalando uv
+### Instalando o neovim + NVM/Node com um ambiente python usando uv
 
 ```sh
-install_uv.sh && source $HOME/.local/bin/env
+make create_py
 ```
 
-### Instalando go
+### Instalando o neovim + NVM/Node com um ambiente golang
 
 ```sh
-install_go.sh && source /etc/bash.bashrc
+make create_go
 ```
 
 ## Observação
