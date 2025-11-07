@@ -20,7 +20,6 @@
   "mini.nvim": { "branch": "main", "commit": "d1a91582bf2d16026ae84292874c70fb2d0ffe42" },
   "neo-tree.nvim": { "branch": "main", "commit": "8cdd6b1940f333c1dd085526a9c45b30fb2dbf50" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
-  "nvim": { "branch": "main", "commit": "8c4125e3c746976ba025dc5d908fa22c6aa09486" },
   "nvim-autopairs": { "branch": "master", "commit": "7a2c97cccd60abc559344042fefb1d5a85b3e33b" },
   "nvim-cmp": { "branch": "main", "commit": "a7bcf1d88069fc67c9ace8a62ba480b8fe879025" },
   "nvim-dap": { "branch": "master", "commit": "6782b097af2417a4c3e33849b0a26ae2188bd7ea" },
@@ -37,5 +36,6 @@
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "todo-comments.nvim": { "branch": "main", "commit": "19d461ddd543e938eb22505fb03fa878800270b6" },
   "vim-dotenv": { "branch": "master", "commit": "5c51cfcf8d87280d6414e03cd6b253eb70ecb800" },
+  "vim-winteriscoming": { "branch": "main", "commit": "84cf33abb4eda6ba6cd2a039bb172c7d1f93380e" },
   "which-key.nvim": { "branch": "main", "commit": "b4177e3eaf15fe5eb8357ebac2286d488be1ed00" }
 }

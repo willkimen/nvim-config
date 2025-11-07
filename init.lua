@@ -27,7 +27,8 @@ require('lazy').setup({
   require 'plugins.telescope',
 
   -- ======== Estilo ==============
-  require 'plugins.theme-catppuccin',
+  require 'plugins.theme-winteriscoming',
+  -- require 'plugins.theme-catppuccin',
   -- require 'plugins.theme-nordic',
   -- require 'plugins.theme-tokyonight',
   require 'plugins.barbar',
