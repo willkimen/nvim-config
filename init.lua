@@ -36,7 +36,6 @@ require('lazy').setup({
 
   -- ============== Others ==========
   require 'plugins.which-key', -- Mostra uma janela interativa com os atalhos disponíveis
-  require 'plugins.debug', -- Debug
 
   -- ============ Formatação e Código =========
   require 'plugins.luvit-meta', -- Melhora a autocompletação em Lua
