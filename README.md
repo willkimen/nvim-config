@@ -44,6 +44,12 @@ source ~/.bashrc
 apt install -y git make unzip gcc ripgrep fd-find xclip fonts-noto-color-emoji
 ```
 
+Para ambiente Wayland, substitua xclip por wl-clipboard:
+
+```sh
+apt install -y git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji
+```
+
 Link: [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
 
 ```sh
