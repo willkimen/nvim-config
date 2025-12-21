@@ -28,7 +28,15 @@ return {
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_hidden = false,
-      },
+        -- Esconde esses diretorios e arquivos
+        hide_by_name = {
+          '__pycache__',
+          '.ruff_cache',
+          '.pytest_cache',
+        }, -- end hide_by_name
+        -- Esconde a mensagem que mostra quantos items ficaram ocultos
+        show_hidden_count = false,
+      }, -- end filtered_items
     },
   },
 }
