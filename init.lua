@@ -50,6 +50,7 @@ require('lazy').setup({
   require 'plugins.indent_line', -- Guias visuais de indentacao
   require 'plugins.mini', -- Lida com o codigo como objetos, podendo navegar e modificar de forma mais simples
   'tpope/vim-dotenv', -- Carrega variáveis de arquivos `.env` para o ambiente do Vim/Neovim.
+  require 'plugins.ts-autotag',
 }, {
   ui = {
     -- Se você estiver usando uma Nerd Font: defina icons como uma tabela vazia, que usará
