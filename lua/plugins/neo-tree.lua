@@ -36,9 +36,9 @@ return {
         }, -- end hide_by_name
         -- Esconde a mensagem que mostra quantos items ficaram ocultos
         show_hidden_count = false,
-        hide_by_pattern = {
-          '*_test.go',
-        },
+        -- hide_by_pattern = {
+        --  '*_test.go',
+        -- },
       }, -- end filtered_items
     },
   },

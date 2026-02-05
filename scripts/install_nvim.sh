@@ -2,57 +2,9 @@
 set -e
 
 # -----------------------------
-# Função para exibir mensagem de uso incorreto
-# -----------------------------
-usage() {
-    echo "Uso: $0 <nvm_version> <node_version> [linguagem]"
-    echo "linguagem opcional: go | py"
-    exit 1
-}
-
-# -----------------------------
-# Verificação de variáveis obrigatórias
-# -----------------------------
-if [ -z "$NVM_VERSION" ] || [ -z "$NODE_VERSION" ]; then
-    usage
-fi
-
-# -----------------------------
 # Instalação de dependências básicas
 # -----------------------------
 apt install -y curl git make unzip gcc ripgrep fd-find xclip fonts-noto-color-emoji
-
-# -----------------------------
-# Instalação do NVM e Node.js
-# -----------------------------
-# Baixa e executa o instalador do NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash
-
-# Carrega o NVM no shell atual
-. "$HOME/.nvm/nvm.sh"
-
-# Instala a versão do Node.js definida na variável
-nvm install ${NODE_VERSION}
-
-# -----------------------------
-# Execução opcional para instalar ambiente para linguagem
-# -----------------------------
-if [ -n "$LANGUAGE" ]; then
-    case "$LANGUAGE" in
-        go)
-            go.sh
-            ;;
-        py)
-            python.sh
-            ;;
-        *)
-            echo "linguagem desconhecida: $LANGUAGE"
-            exit 1
-            ;;
-    esac
-else
-    echo "Nenhuma linguagem selecionado. Instalado apenas Neovim e Node/NVM."
-fi
 
 # -----------------------------
 # Instalação do Neovim

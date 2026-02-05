@@ -14,7 +14,7 @@ git clone git@github.com:willkimen/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.co
 
 Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
 
-```bash
+```sh
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz &&
 sudo rm -rf /opt/nvim &&
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
@@ -22,19 +22,19 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 > Remova o diretório relativo ao neovim antigo no diretório opt/
 
-```python
+```sh
 micro ~/.bashrc
 nano ~/.bashrc
 ```
 
-```python
+```sh
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 ```
 
 > Insira essa linha. Se você está atualizando para um nova versão, a linha
 com versão antiga já existe, então substitua pela mais nova.
 
-```python
+```sh
 source ~/.bashrc
 ```
 
@@ -50,39 +50,16 @@ Para ambiente Wayland, substitua xclip por wl-clipboard:
 apt install -y git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji
 ```
 
-Link: [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
-
-```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash &&
-\. "$HOME/.nvm/nvm.sh" &&
-nvm install 22 &&
-nvm -v &&
-npm -v &&
-node -v
-```
 
 ## Instalando em um container Docker
 
-> A instalação do Node é importante, pois alguns plugins necessitam.  
 > Para rodar esses comandos, só funcionam no Linux, pois o Make só tem para Linux.  
 > Para executar as configurações, dentro do container execute o comando 'nvim'.  
 
-### Instalando somente o neovim + NVM/Node
+### Instalando o neovim 
 
 ```sh
 make create_nvim
-```
-
-### Instalando o neovim + NVM/Node com um ambiente python usando uv
-
-```sh
-make create_py
-```
-
-### Instalando o neovim + NVM/Node com um ambiente golang
-
-```sh
-make create_go
 ```
 
 ## Observação
