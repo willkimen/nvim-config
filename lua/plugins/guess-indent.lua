@@ -1,1 +1,1 @@
-return 'NMAC427/guess-indent.nvim' -- Detect tabstop and shiftwidth
+return { 'NMAC427/guess-indent.nvim', opts = {} } -- Detect tabstop and shiftwidth
