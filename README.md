@@ -50,6 +50,16 @@ Para ambiente Wayland, substitua xclip por wl-clipboard:
 apt install -y git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji
 ```
 
+## Atualizando o neovim
+
+Para atualizar é muito simples, se você já fez as etapas anteriores, é só executar:
+
+Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz &&
+sudo rm -rf /opt/nvim &&
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+```
 
 ## Instalando em um container Docker
 
