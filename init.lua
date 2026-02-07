@@ -19,7 +19,6 @@ require('lazy').setup({
   -- ============== TS e LSP ==========
   require 'plugins.nvim-treesitter',
   require 'plugins.nvim-lspconfig',
-  require 'plugins.lazydev', -- Fornece suporte LSP para arquivos Lua no Neovim
   -- require 'plugins.flutter_tools',
 
   -- =========== Navegação ===========

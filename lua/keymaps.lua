@@ -5,7 +5,6 @@
 -- Pressionar Esc no modo normal limpa o destaque da pesquisa.
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- ########## Atalhos de diagnóstico ##############
 -- Abre a lista de quickfix com mensagens de diagnóstico.
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
