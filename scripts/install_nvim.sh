@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e
-
 # -----------------------------
 # Instalação de dependências básicas
 # -----------------------------
