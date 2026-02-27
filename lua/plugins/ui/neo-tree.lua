@@ -1,6 +1,8 @@
 -- Neo-tree é um plugin do Neovim para navegar no sistema de arquivos
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
+---@module 'lazy'
+---@type LazySpec
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
@@ -13,6 +15,8 @@ return {
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
+  ---@module 'neo-tree'
+  ---@type neotree.Config
   opts = {
     window = {
       position = 'float', -- define o modo flutuante como padrão

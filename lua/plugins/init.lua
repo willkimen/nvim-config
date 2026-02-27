@@ -1,3 +1,5 @@
+---@module 'lazy'
+---@type LazySpec
 require("lazy").setup({
   -- Treesitter
   require("plugins.treesitter.nvim-treesitter"),
@@ -39,7 +41,7 @@ require("lazy").setup({
   require("plugins.debug.debug"),
 
   "tpope/vim-dotenv",
-}, {
+}, { ---@diagnostic disable-line: missing-fields
   ui = {
     icons = vim.g.have_nerd_font and {} or {},
   },
