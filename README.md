@@ -15,8 +15,10 @@ git clone git@github.com:willkimen/nvim-config.git "${XDG_CONFIG_HOME:-$HOME/.co
 Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
 
 ```sh
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz &&
-sudo rm -rf /opt/nvim &&
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+&&
+sudo rm -rf /opt/nvim 
+&&
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ```
 
@@ -41,13 +43,26 @@ source ~/.bashrc
 ### Instalando as dependências
 
 ```sh
-apt install -y git make unzip gcc ripgrep fd-find xclip fonts-noto-color-emoji tree-sitter-cli
+apt install -y git make unzip gcc ripgrep fd-find xclip fonts-noto-color-emoji
 ```
 
 Para ambiente Wayland, substitua xclip por wl-clipboard:
 
 ```sh
-apt install -y git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji tree-sitter-cli
+apt install -y git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-emoji
+```
+
+O tree-sitter agora tem como dependência obrigatória o tree-sitter-cli, e para instalar,
+recomendo usar a versão do NPM, para pegar a versão mais nova (a versão apt é antiga):
+
+```sh
+npm install -g tree-sitter-cli
+```
+
+Instale via NPM o plugin markdownlint:
+
+```sh
+npm install -g markdownlint-cli
 ```
 
 ## Atualizando o neovim
@@ -55,18 +70,21 @@ apt install -y git make unzip gcc ripgrep fd-find wl-clipboard fonts-noto-color-
 Para atualizar é muito simples, se você já fez as etapas anteriores, é só executar:
 
 Link: [neovim/INSTALL.md at master · neovim/neovim · GitHub](https://github.com/neovim/neovim/blob/master/INSTALL.md#pre-built-archives-2)
+
 ```sh
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz &&
-sudo rm -rf /opt/nvim &&
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+&&
+sudo rm -rf /opt/nvim 
+&&
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ```
 
 ## Instalando em um container Docker
 
-> Para rodar esses comandos, só funcionam no Linux, pois o Make só tem para Linux.  
-> Para executar as configurações, dentro do container execute o comando 'nvim'.  
+> Para rodar esses comandos, só funcionam no Linux, pois o Make só tem para Linux.
+> Para executar as configurações, dentro do container execute o comando 'nvim'.
 
-### Instalando o neovim 
+### Instalando o neovim no Docker
 
 ```sh
 make create_nvim
