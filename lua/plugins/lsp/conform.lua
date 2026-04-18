@@ -6,7 +6,7 @@ return { -- Autoformat
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format { async = true }
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -24,16 +24,17 @@ return { -- Autoformat
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
+          return {timeout_ms = 500}
         end
       end,
+      default_format_opts = {
+        lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
+      },
+      -- You can also specify external formatters in here.
       formatters_by_ft = {
-        lua = { 'stylua' },
+        -- lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" }, stop_after_first = false,
+        -- python = { "isort", "black" }, stop_after_first = false,
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
