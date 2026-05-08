@@ -16,8 +16,8 @@ require("lazy").setup({
   require("plugins.ui.telescope"),
 
   -- UI / visual
-  -- require("plugins.ui.theme-catppuccin"),
-  require("plugins.ui.theme-github"),
+  require("plugins.ui.theme-catppuccin"),
+  -- require("plugins.ui.theme-github"),
   -- require("plugins.ui.theme-nordic"),
   -- require("plugins.ui.theme-tokyonight"),
   require("plugins.ui.barbar"),
