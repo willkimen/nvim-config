@@ -31,6 +31,7 @@ vim.pack.add({
   "https://github.com/Bilal2453/luvit-meta",
   "https://github.com/nvim-mini/mini.nvim",
   "https://github.com/saghen/blink.cmp",
+  "https://github.com/saghen/blink.lib",
   "https://github.com/L3MON4D3/LuaSnip",
 
   -- Treesitter
