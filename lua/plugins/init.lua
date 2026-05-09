@@ -9,7 +9,6 @@ require("lazy").setup({
   require("plugins.lsp.nvim-lspconfig"),
   require("plugins.lsp.lint"),
   require("plugins.lsp.conform"),
-  -- require("plugins.lsp.flutter_tools"),
 
   -- Navegação
   require("plugins.ui.neo-tree"),
@@ -17,9 +16,6 @@ require("lazy").setup({
 
   -- UI / visual
   require("plugins.ui.theme-catppuccin"),
-  -- require("plugins.ui.theme-github"),
-  -- require("plugins.ui.theme-nordic"),
-  -- require("plugins.ui.theme-tokyonight"),
   require("plugins.ui.barbar"),
 
   -- Git
@@ -37,9 +33,6 @@ require("lazy").setup({
   require("plugins.misc.luvit-meta"),
   require("plugins.misc.saghen-blink-cmp"),
   require("plugins.misc.mini"),
-
-  -- Debug
-  require("plugins.debug.debug"),
 
   "tpope/vim-dotenv",
 }, { ---@diagnostic disable-line: missing-fields
