@@ -1,3 +1,6 @@
+-- Faz cache dos módulos, acelerando a inicialização
+vim.loader.enable()
+
 require("core.global")
 require("core.options")
 require("core.keymaps")
