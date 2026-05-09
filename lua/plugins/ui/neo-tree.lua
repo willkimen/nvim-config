@@ -1,49 +1,59 @@
 -- Neo-tree é um plugin do Neovim para navegar no sistema de arquivos
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
-
----@module 'lazy'
----@type LazySpec
-return {
-  'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- não é estritamente necessário, mas recomendado
-    'MunifTanjim/nui.nvim',
-  },
-  lazy = false,
-  keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-  },
-  ---@module 'neo-tree'
-  ---@type neotree.Config
-  opts = {
-    window = {
-      position = 'float', -- define o modo flutuante como padrão
-    },
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
-      },
-      -- Mostrará arquivos ocultos, arquivos ignorados pelo Git e arquivos que são normalmente ocultos.
-      filtered_items = {
-        hide_dotfiles = false,
-        hide_gitignored = false,
-        hide_hidden = false,
-        -- Esconde esses diretorios e arquivos
-        hide_by_name = {
-          '__pycache__',
-          '.ruff_cache',
-          '.pytest_cache',
-        }, -- end hide_by_name
-        -- Esconde a mensagem que mostra quantos items ficaram ocultos
-        show_hidden_count = false,
-        -- hide_by_pattern = {
-        --  '*_test.go',
-        -- },
-      }, -- end filtered_items
-    },
-  },
+--
+local plugins = {
+  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '*' },
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/MunifTanjim/nui.nvim',
 }
+
+if vim.g.have_nerd_font then
+  table.insert(plugins, 'https://github.com/nvim-tree/nvim-web-devicons') -- not strictly required, but recommended
+end
+
+vim.pack.add(plugins)
+
+vim.keymap.set(
+  "n",
+  "\\",
+  "<cmd>Neotree reveal<CR>",
+  {
+    desc = "NeoTree reveal",
+    silent = true,
+  }
+)
+
+require("neo-tree").setup({
+  window = {
+    position = "float",
+  },
+
+  filesystem = {
+    window = {
+      mappings = {
+        ["\\"] = "close_window",
+      },
+    },
+
+    -- Mostrará arquivos ocultos, ignorados pelo Git e ocultos do sistema
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_hidden = false,
+
+      -- Diretórios e arquivos escondidos
+      hide_by_name = {
+        "__pycache__",
+        ".ruff_cache",
+        ".pytest_cache",
+      },
+
+      -- Esconde contador de itens ocultos
+      show_hidden_count = false,
+
+      -- hide_by_pattern = {
+      --   "*_test.go",
+      -- },
+    },
+  },
+})

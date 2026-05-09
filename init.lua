@@ -4,5 +4,6 @@ require("core.keymaps")
 require("core.autocmd")
 require("core.diagnostic")
 
-require("lazy-setup")
+require("core.packages")
+
 require("plugins")
