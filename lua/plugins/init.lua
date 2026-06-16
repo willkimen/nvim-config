@@ -49,9 +49,9 @@ vim.pack.add({
 })
 
 if vim.g.have_nerd_font then
-  vim.pack.add({
-    "https://github.com/nvim-tree/nvim-web-devicons",
-  })
+  require('mini.icons').setup()
+  -- Used for backwards compatibility with plugins that require `nvim-web-devicons` (e.g. telescope.nvim)
+  MiniIcons.mock_nvim_web_devicons()
 end
 
 if vim.fn.executable("make") == 1 then
