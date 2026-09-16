@@ -81,6 +81,9 @@ local servers = {
   ty = {},
   ts_ls = {},
   stylua = {}, -- Used to format Lua code
+  svelte = {},
+  cssls = {},
+
 
   -- Special Lua Config, as recommended by neovim help docs
   lua_ls = {
