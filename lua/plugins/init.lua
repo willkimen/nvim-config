@@ -44,8 +44,12 @@ vim.pack.add({
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/nvim-telescope/telescope-ui-select.nvim",
   "https://github.com/catppuccin/nvim",
-
   "https://github.com/tpope/vim-dotenv",
+  -- UI - to noice plugin
+  "https://github.com/folke/noice.nvim",
+  "https://github.com/MunifTanjim/nui.nvim",
+  "https://github.com/rcarriga/nvim-notify",
+
 })
 
 if vim.g.have_nerd_font then
@@ -78,6 +82,7 @@ require("plugins.ui.telescope")
 -- UI / visual
 require("plugins.ui.bufferline")
 require("plugins.ui.theme-catppuccin")
+require("plugins.ui.noice")
 
 -- Git
 require("plugins.git.gitsigns")
