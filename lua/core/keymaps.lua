@@ -42,16 +42,27 @@ vim.keymap.set('i', 'jk', '<ESC>')
 -- Agora ctrl z está desativado, para não sair da sessão do neovim sem querer.
 vim.keymap.set('n', '<C-z>', '<Nop>', { noremap = true, silent = true })
 
--- Navegar para a próxima aba/tab usando a tecla Tab
--- Estou usando o plugin barbar, essa configuração não é mais útil.
--- Barbar não usa tabas do nvim, e sim  buffers para representar as abas.
--- Por conta disso, essa configuração até funciona, mas não tão bem.
--- Por conta disso estou usando a nova configuração
--- vim.api.nvim_set_keymap('n', '<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, silent = true })
+-- [[ ----------------   Atalhos para Bufferline ------------------------ ]]
+-- Navegar para a próxima aba/tab usando a tecla Tab para o plugin bufferline
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Tab>', '<Cmd>BufferNext<CR>', opts)
-vim.api.nvim_set_keymap('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', opts)
+
+vim.keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {
+    desc = "Próximo buffer",
+    noremap = true,
+    silent = true,
+})
+
+vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {
+    desc = "Buffer anterior",
+    noremap = true,
+    silent = true,
+})
+
+-- Para fechar uma aba usando o plugin bufferline
+vim.keymap.set("n", "<leader>bd", "<Cmd>bdelete<CR>", {
+    desc = "Fechar buffer atual",
+    silent = true,
+})
 
 -- Salvar o buffer atual com Ctrl+s
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })

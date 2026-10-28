@@ -39,7 +39,7 @@ vim.pack.add({
   "https://github.com/windwp/nvim-ts-autotag",
 
   -- UI
-  "https://github.com/romgrk/barbar.nvim",
+  "https://github.com/akinsho/bufferline.nvim",
   "https://github.com/nvim-neo-tree/neo-tree.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/nvim-telescope/telescope-ui-select.nvim",
@@ -76,8 +76,8 @@ require("plugins.ui.neo-tree")
 require("plugins.ui.telescope")
 
 -- UI / visual
+require("plugins.ui.bufferline")
 require("plugins.ui.theme-catppuccin")
-require("plugins.ui.barbar")
 
 -- Git
 require("plugins.git.gitsigns")
