@@ -7,6 +7,7 @@ vim.pack.add({
   "https://github.com/lukas-reineke/indent-blankline.nvim",
   "https://github.com/folke/todo-comments.nvim",
   "https://github.com/folke/which-key.nvim",
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
 
   -- Shared dependencies
   "https://github.com/nvim-lua/plenary.nvim",
@@ -96,6 +97,7 @@ require("plugins.editor.autopairs")
 require("plugins.editor.guess-indent")
 require("plugins.editor.todo-comments")
 require("plugins.editor.indent_line")
+require("plugins.editor.render-markdown")
 
 -- Autocomplete / Lua
 require("plugins.misc.saghen-blink-cmp")
