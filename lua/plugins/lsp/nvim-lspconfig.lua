@@ -83,7 +83,7 @@ local servers = {
   stylua = {}, -- Used to format Lua code
   svelte = {},
   cssls = {},
-
+  rust_analyzer = {},
 
   -- Special Lua Config, as recommended by neovim help docs
   lua_ls = {

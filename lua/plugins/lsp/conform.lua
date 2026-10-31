@@ -3,10 +3,13 @@
 require('conform').setup {
   notify_on_error = false,
   format_on_save = function(bufnr)
-    -- You can specify filetypes to autoformat on save here:
+    -- Para configurar a auto formatação quando salvar
+    -- o buffer, faça aqui. Mas não esqueça de configura
+    -- abaixo, o formatador em formatters_by_ft.
     local enabled_filetypes = {
       -- lua = true,
       -- python = true,
+      rust = true,
     }
     if enabled_filetypes[vim.bo[bufnr].filetype] then
       return { timeout_ms = 500 }
@@ -17,9 +20,10 @@ require('conform').setup {
   default_format_opts = {
     lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
   },
-  -- You can also specify external formatters in here.
+  -- Para especificar os formatatores, faça aqui, mas
+  -- não esqueça de baixar e instalar manualmente.
   formatters_by_ft = {
-    -- rust = { 'rustfmt' },
+    rust = { 'rustfmt' },
     -- Conform can also run multiple formatters sequentially
     -- python = { "isort", "black" },
     --
