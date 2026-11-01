@@ -42,7 +42,7 @@ vim.pack.add({
   -- UI
   "https://github.com/folke/trouble.nvim",
   "https://github.com/akinsho/bufferline.nvim",
-  "https://github.com/nvim-neo-tree/neo-tree.nvim",
+  -- "https://github.com/nvim-neo-tree/neo-tree.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/nvim-telescope/telescope-ui-select.nvim",
   "https://github.com/catppuccin/nvim",
@@ -78,7 +78,7 @@ require("plugins.lsp.lint")
 require("plugins.lsp.conform")
 
 -- Navegação
-require("plugins.ui.neo-tree")
+-- require("plugins.ui.neo-tree")
 require("plugins.ui.telescope")
 
 -- UI / visual

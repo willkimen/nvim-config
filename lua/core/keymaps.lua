@@ -68,6 +68,15 @@ vim.keymap.set("n", "<leader>bd", "<Cmd>bdelete<CR>", {
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-s>', '<C-o>:w<CR>', { noremap = true, silent = true })
 
+-- [[Abrindo e fechando a file explorer no mini.files]]
+vim.keymap.set("n", "\\", function()
+  if MiniFiles.close() then
+    return
+  end
+
+  MiniFiles.open()
+end, { desc = "Toggle file explorer" })
+
 -- [[ Movendo linhas ]]
 -- Mover linha para cima
 vim.api.nvim_set_keymap('n', '<C-k>', ':m .-2<CR>==', { noremap = true, silent = true })
