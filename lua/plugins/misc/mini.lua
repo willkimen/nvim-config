@@ -92,10 +92,5 @@ require("mini.files").setup({
 
     -- Entra no diretório ou abre o arquivo sem fechar o explorador.
     go_in = "L",
-
-    -- Sincroniza as alterações pendentes com o sistema de arquivos ao pressionar Enter.
-    -- É uma forma de confirmar alguma alteração, como por exemplo uma remoção de um arquivo.
-    -- Substitui a tecla padrao = , que faz exatamente isso. 
-    sync = "<CR>",
   },
 })

@@ -12,10 +12,49 @@ require("noice").setup({
         },
     },
 
+    -- Configura a apresentação da linha de comando e das buscas.
+    cmdline = {
+        format = {
+            -- Exibe a busca para frente (/) em uma janela flutuante centralizada.
+            search_down = {
+                view = "cmdline_popup",
+            },
+
+            -- Exibe a busca para trás (?) em uma janela flutuante centralizada.
+            search_up = {
+                view = "cmdline_popup",
+            },
+        },
+    },
+
+    -- Personaliza a aparência e o posicionamento da janela flutuante.
+    views = {
+        cmdline_popup = {
+            position = {
+                -- Posiciona a janela verticalmente no centro do editor.
+                row = "50%",
+
+                -- Posiciona a janela horizontalmente no centro do editor.
+                col = "50%",
+            },
+            size = {
+                -- Define a largura da janela em 60 colunas.
+                width = 60,
+
+                -- Ajusta automaticamente a altura conforme o conteúdo.
+                height = "auto",
+            },
+            border = {
+                -- Adiciona bordas arredondadas à janela flutuante.
+                style = "rounded",
+            },
+        },
+    },
+
     presets = {
-        -- Mantém a busca com / e ? na parte inferior do editor,
-        -- como no Neovim tradicional.
-        bottom_search = true,
+        -- Desativa o posicionamento da busca (/ e ?) na parte inferior,
+        -- permitindo que ela utilize a janela flutuante configurada.
+        bottom_search = false,
 
         -- Posiciona o campo de comando e as sugestões em conjunto,
         -- facilitando a escolha de comandos.
